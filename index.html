@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow Pro</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div>
+
+                <div class="brand-title">
+    <img src="images/favicon.png" alt="TaskFlow Pro Logo">
+    <h1>TaskFlow Pro</h1>
+</div>
+
+                    <p class="developer-name">
+                        Developed by <span>Thivyan Thambirajah</span>
+                    </p>
+
+                    <p class="tagline">
+                        Organize your work. Boost your productivity.
+                    </p>
+
+            </div>
+
+            <button id="themeBtn">
+
+                <i class="fa-solid fa-moon"></i>
+
+            </button>
+
+        </header>
+
+        <!-- DASHBOARD -->
+
+        <section class="dashboard">
+
+            <div class="card card-total">
+                <div class="card-icon">📋</div>
+                <div>
+                    <h3>Total Tasks</h3>
+                    <span id="totalTasks">0</span>
+                    <p>All created tasks</p>
+                </div>
+            </div>
+
+            <div class="card card-completed">
+                <div class="card-icon">✅</div>
+                <div>
+                    <h3>Completed</h3>
+                    <span id="completedTasks">0</span>
+                    <p>Finished tasks</p>
+                </div>
+            </div>
+
+            <div class="card card-overdue">
+                <div class="card-icon">⚠️</div>
+                <div>
+                    <h3>Overdue</h3>
+                    <span id="overdueTasks">0</span>
+                    <p>Need attention</p>
+                </div>
+            </div>
+
+            <div class="card card-today">
+                <div class="card-icon">📅</div>
+                <div>
+                    <h3>Due Today</h3>
+                    <span id="todayTasks">0</span>
+                    <p>Tasks due today</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTROLS -->
+
+        <section class="controls">
+
+            <input type="text" id="searchTask" placeholder="Search tasks...">
+
+            <div class="filter-wrapper">
+
+                <button id="filterBtn">
+                    <span id="filterText">All Priorities</span>
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+
+                <div class="filter-menu" id="filterMenu">
+
+                    <button data-value="all">All Priorities</button>
+                    <button data-value="High">High</button>
+                    <button data-value="Medium">Medium</button>
+                    <button data-value="Low">Low</button>
+
+                </div>
+
+            </div>
+
+            <div class="action-buttons">
+
+                <div class="export-wrapper">
+
+                    <button id="exportBtn">
+                        <i class="fa-solid fa-download"></i>
+                        Export
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+
+                    <div class="export-menu" id="exportMenu">
+
+                        <button id="exportCSVBtn">
+                            <i class="fa-solid fa-file-csv"></i>
+                            CSV
+                        </button>
+
+                        <button id="exportJSONBtn">
+                            <i class="fa-solid fa-file-code"></i>
+                            JSON
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button id="addTaskBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Task
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- PROGRESS -->
+
+        <section class="progress-section">
+
+            <div class="progress-info">
+
+                <span>Progress</span>
+
+                <span id="progressPercent">0%</span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ANALYTICS -->
+
+        <section class="analytics">
+
+            <div class="chart-card">
+
+                <h2>Task Analytics</h2>
+
+                <div class="analytics-content">
+
+                    <div class="chart-container">
+
+                        <canvas id="taskChart"></canvas>
+
+                    </div>
+
+                    <div class="stats-panel">
+
+                        <div class="stat-box">
+
+                            <h4>Productivity</h4>
+
+                            <span id="productivityScore">0%</span>
+
+                        </div>
+
+                        <div class="mini-stat">
+
+                            <span>📅 Today</span>
+
+                            <strong id="todayTasks2">0</strong>
+
+                        </div>
+
+                        <div class="mini-stat">
+
+                            <span>✅ Completed</span>
+
+                            <strong id="completedTasks2">0</strong>
+
+                        </div>
+
+                        <div class="mini-stat">
+
+                            <span>⚠ Overdue</span>
+
+                            <strong id="overdueTasks2">0</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- KANBAN BOARD -->
+
+        <section class="board">
+
+            <div class="column">
+
+                <h2>📋 To Do <span id="todoCount">0</span></h2>
+
+                <div id="todo" class="task-list"></div>
+
+            </div>
+
+            <div class="column">
+
+                <h2>🚀 In Progress <span id="progressCount">0</span></h2>
+
+                <div id="progress" class="task-list"></div>
+
+            </div>
+
+            <div class="column">
+
+                <h2>✅ Done <span id="doneCount">0</span></h2>
+
+                <div id="done" class="task-list"></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- ==========================
+ADD TASK MODAL
+========================== -->
+
+    <div class="modal" id="taskModal">
+
+        <div class="modal-content">
+
+            <span class="close-btn">&times;</span>
+
+            <h2>Add New Task</h2>
+
+            <form id="taskForm">
+
+                <label>Task Title</label>
+
+                <input type="text" id="taskTitle" placeholder="Enter task title" required>
+
+                <label>Description</label>
+
+                <textarea id="taskDescription" placeholder="Task description"></textarea>
+
+                <label>Due Date</label>
+
+                <input type="date" id="taskDate">
+
+                <label>Priority</label>
+
+                <select id="taskPriority">
+
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+
+                </select>
+
+                <button type="submit" class="saveTaskBtn">
+
+                    Add Task
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+DELETE MODAL
+========================== -->
+
+    <div class="modal" id="deleteModal">
+
+        <div class="modal-content">
+
+            <h2>Delete Task</h2>
+
+            <p style="margin:20px 0;">
+
+                Are you sure you want to delete this task?
+
+            </p>
+
+            <div class="delete-buttons">
+
+                <button id="cancelDelete" class="cancel-btn">
+
+                    Cancel
+
+                </button>
+
+                <button id="confirmDelete" class="delete-confirm-btn">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+TOAST
+========================== -->
+
+    <div id="toast"></div>
+
+    <!-- ==========================
+SCRIPTS
+========================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/dragdrop.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
