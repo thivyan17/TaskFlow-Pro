@@ -4,11 +4,11 @@
 
 <p align="center">
 
-<a href="https://thivyanthambirajah.github.io/TaskFlow/" target="_blank">
+<a href="https://thivyan17.github.io/TaskFlow-Pro/" target="_blank">
 <img src="https://img.shields.io/badge/🌐_Live_Demo-Click_Here-00C853?style=for-the-badge">
 </a>
 
-<a href="https://github.com/ThivyanThambirajah/TaskFlow" target="_blank">
+<a href="https://github.com/thivyan17/TaskFlow-Pro" target="_blank">
 <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github">
 </a>
 
